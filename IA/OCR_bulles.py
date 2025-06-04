@@ -76,8 +76,6 @@ def get_texts(path_image, boxes, padding=0):
         # of results
         results.append([(startX, startY, endX, endY), text])
 
-    # sort the results bounding box coordinates from top to bottom
-    results = sorted(results, key=lambda r: r[0][1])
     # loop over the results
     for index, (((startX, startY, endX, endY), text)) in enumerate(results):
         boxes[index].append("".join([c if ord(c) < 128 else "" for c in text]).strip())
@@ -85,12 +83,16 @@ def get_texts(path_image, boxes, padding=0):
 
 
 # variables pour l'exemple
-path_image = "../data/train_version_YOLO_V8/images/DS_2_jpg.rf.0070a2c64c6c6389ab8bbcc4c8d0287b.jpg"
+path_image = "../data/train_version_YOLO_V8/images/DS_11_jpg.rf.7dea8b7e0a5f3623f8c68550a201d943.jpg"
 padding = 0
 boxes = [
-    [0.44609375, 0.11484375, 0.2265625, 0.12734375],
-    [0.86328125, 0.14921875, 0.225, 0.11015625],
-    [0.39140625, 0.303125, 0.1828125, 0.10546875]
+[0.15,0.80625,0.165625,0.0984375],
+[0.80703125,0.1875,0.21171875,0.109375],
+[0.2109375,0.184375,0.25234375,0.12421875],
+[0.80625,0.51796875,0.1921875,0.16171875],
+[0.66640625,0.90546875,0.20859375,0.11875],
+[0.84765625,0.8328125,0.165625,0.115625],
+[0.2609375,0.4546875,0.103125,0.090625]
 ]
 
 print(get_texts(path_image,boxes))
