@@ -50,7 +50,7 @@ def get_texts(path_image, boxes, padding=0):
     # initialize the list of results
     results = []
     # loop over the bounding boxes
-    for (centerX, centerY, width, heigth) in boxes:
+    for index, (centerX, centerY, width, heigth) in enumerate(boxes):
         startX, startY, endX, endY = yolo_to_pixel(centerX, centerY, width, heigth, W, H)
         # in order to obtain a better OCR of the text we can potentially
         # apply a bit of padding surrounding the bounding box -- here we
@@ -74,13 +74,8 @@ def get_texts(path_image, boxes, padding=0):
         text = pytesseract.image_to_string(roi, config=config)
         # add the bounding box coordinates and OCR'd text to the list
         # of results
-        results.append([(startX, startY, endX, endY), text])
-
-    # loop over the results
-    for index, (((startX, startY, endX, endY), text)) in enumerate(results):
         boxes[index].append("".join([c if ord(c) < 128 else "" for c in text]).strip())
     return boxes
-
 
 # variables pour l'exemple
 path_image = "../data/train_version_YOLO_V8/images/DS_11_jpg.rf.7dea8b7e0a5f3623f8c68550a201d943.jpg"
