@@ -1,0 +1,13 @@
+# Streamlit et interface
+streamlit==1.28.1
+
+# Traitement d'image basique
+pillow==10.1.0
+numpy==1.24.3
+
+# Communication et utilities
+requests==2.31.0
+pandas==2.1.3
+
+# Monitoring
+python-json-logger==2.0.7 

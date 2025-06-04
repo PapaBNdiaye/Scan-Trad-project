@@ -1,0 +1,236 @@
+# ============================================================================
+# SCAN TRAD - .gitignore
+# ============================================================================
+
+# ============================================================================
+# Python
+# ============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ============================================================================
+# Virtual Environments
+# ============================================================================
+venv/
+env/
+ENV/
+.venv/
+.env/
+.pyenv/
+.python-version
+
+# ============================================================================
+# Machine Learning & AI Models
+# ============================================================================
+# Modèles YOLO entraînés (très volumineux)
+models/yolo/*.pt
+models/yolo/*.onnx
+models/yolo/best.pt
+models/yolo/last.pt
+models/yolo/yolo*.pt
+
+# Cache des modèles Transformers (Hugging Face)
+models/translation/huggingface_cache/
+models/translation/.cache/
+.transformers_cache/
+.huggingface/
+
+# Données d'entraînement et datasets (peuvent être volumineux)
+data/raw/
+data/processed/
+data/augmented/
+data/temp/
+*.dataset
+*.h5
+*.hdf5
+
+# TensorBoard logs
+runs/
+logs/
+tensorboard_logs/
+
+# Checkpoints et sauvegardes
+checkpoints/
+*.ckpt
+*.checkpoint
+
+# ============================================================================
+# Images et Médias
+# ============================================================================
+# Images temporaires et générées
+temp_images/
+output_images/
+processed_images/
+results/
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+*.webp
+
+# Sauf les images d'exemple (ajoutez ! pour les garder si nécessaire)
+# !examples/*.png
+# !docs/images/*.png
+
+# ============================================================================
+# Docker & Containers
+# ============================================================================
+# Volumes Docker persistants
+docker-volumes/
+
+# ============================================================================
+# IDEs et Editeurs
+# ============================================================================
+# VSCode
+.vscode/
+.history/
+
+# PyCharm
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Spyder
+.spyderproject
+.spyproject
+
+# ============================================================================
+# Logs et Monitoring
+# ============================================================================
+*.log
+logs/
+log/
+*.out
+*.err
+
+# ============================================================================
+# Configuration et Secrets
+# ============================================================================
+# Variables d'environnement
+.env
+.env.local
+.env.production
+.env.development
+config/secrets.json
+config/local_config.yaml
+
+# API Keys et tokens
+*.key
+*.pem
+api_keys.txt
+secrets/
+
+# ============================================================================
+# Bases de Données
+# ============================================================================
+*.db
+*.sqlite
+*.sqlite3
+database/
+
+# ============================================================================
+# Tests et Coverage
+# ============================================================================
+.coverage
+htmlcov/
+.tox/
+.nox/
+.pytest_cache/
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# ============================================================================
+# Système d'exploitation
+# ============================================================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ============================================================================
+# Divers
+# ============================================================================
+# Archives
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Fichiers temporaires
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Profiling
+*.prof
+
+# ============================================================================
+# Spécifique au Projet
+# ============================================================================
+# Scripts de développement local
+dev-scripts/
+local_tests/
+
+# Documentation générée
+docs/_build/
+site/
+
+# Backups
+backup/
+*.bak
+*.backup
+
+# Expérimentations
+experiments/
+notebooks/drafts/
+sandbox/ 

@@ -1,0 +1,69 @@
+# === ENVIRONNEMENTS VIRTUELS ===
+venv/
+env/
+.env
+*.env
+
+# === CACHE PYTHON ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+*.egg-info/
+
+# === IDE ET EDITEURS ===
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# === SYSTEME ET LOGS ===
+*.log
+logs/
+
+# === GIT ===
+.git/
+.gitignore
+.gitattributes
+
+# === DOCUMENTATION ===
+README.md
+*.md
+docs/
+
+# === IMAGES ET DONNEES TEMPORAIRES ===
+temp_images/
+*.png
+*.jpg
+*.jpeg
+data/
+
+# === SCRIPTS LOCAUX ===
+start_*.bat
+run_*.sh
+test-docker.bat
+
+# === MODELES VOLUMINEUX ===
+models/
+*.pt
+*.onnx
+*.h5
+
+# === FICHIERS TEMPORAIRES ===
+temp/
+tmp/
+*.tmp
+*.bak
+*.backup
+
+# === NOTEBOOKS ===
+*.ipynb
+.ipynb_checkpoints/
+
+# === NODE MODULES (SI PRESENT) ===
+node_modules/ 

@@ -1,0 +1,31 @@
+# FastAPI et serveur
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# Traitement d'image et IA
+opencv-python-headless==4.8.1.78
+pillow==10.1.0
+numpy==1.24.3
+
+# Machine Learning et YOLO
+ultralytics==8.0.206
+torch==2.1.0
+torchvision==0.16.0
+
+# OCR
+pytesseract==0.3.10
+easyocr==1.7.0
+
+# NLP et Traduction
+transformers==4.35.2
+torch-audio==2.1.0
+sentencepiece==0.1.99
+sacremoses==0.1.1
+
+# Utilities
+requests==2.31.0
+python-multipart==0.0.6
+aiofiles==23.2.1
+
+# Monitoring et logs
+python-json-logger==2.0.7 
