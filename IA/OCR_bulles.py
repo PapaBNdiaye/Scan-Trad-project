@@ -8,10 +8,21 @@ import pandas as pd  # data processing, CSV file I/O (e.g. pd.read_csv)
 import cv2
 import pytesseract
 
+from transformers import pipeline
+
+corrector = pipeline("text2text-generation", model="vennify/t5-base-grammar-correction")
+
+def correct_text(text):
+    result = corrector(text, max_new_tokens=100)[0]["generated_text"]
+    return result
+
+
+ # => "This is a simple text"
+
+
 
 # Input data files are available in the read-only "../input/" directory
-# For example, running this (by clicking run or pressing Shift+Enter) will list all files under the input directory
-
+# For example, running this (by clicking run or pressing Shift+Enter) will list all files under the input direc
 
 def yolo_to_pixel(cx_norm, cy_norm, w_norm, h_norm, img_width, img_height):
     """
@@ -81,7 +92,9 @@ def get_texts(path_image, boxes, padding=0):
         text = pytesseract.image_to_string(roi, config=config)
         # add the bounding box coordinates and OCR'd text to the list
         # of results
-        boxes[index].append("".join([c if ord(c) < 128 else "" for c in text]).strip())
+        text_cleaned = "".join([c if ord(c) < 128 else "" for c in text]).strip()
+        text_corrected= correct_text(text_cleaned)
+        boxes[index].append(text_corrected)
     return boxes
 
 
@@ -98,4 +111,4 @@ boxes = [
     [0.2609375, 0.4546875, 0.103125, 0.090625]
 ]
 
-print(get_texts(path_image, boxes))
+# print(get_texts(path_image, boxes))
