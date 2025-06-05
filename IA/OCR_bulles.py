@@ -45,6 +45,13 @@ def get_texts(path_image, boxes, padding=0):
     # load the input image and grab the image dimensions
     image = cv2.imread(path_image)
     orig = image.copy()
+
+    #pré-traitement
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)  # conversion en niveaux de gris
+    thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]  # seuil de niveaux de gris
+    kernel = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]])
+    sharpened = cv2.filter2D(thresh, -1, kernel)  # améliorer la netteté
+
     (H, W) = image.shape[:2]
 
     # initialize the list of results
@@ -63,7 +70,7 @@ def get_texts(path_image, boxes, padding=0):
         endX = min(H, endX + (dX * 2))
         endY = min(W, endY + (dY * 2))
         # extract the actual padded ROI
-        roi = orig[startY:endY, startX:endX]
+        roi = sharpened[startY:endY, startX:endX]
 
         # in order to apply Tesseract v4 to OCR text we must supply
         # (1) a language, (2) an OEM flag of 1, indicating that the we
@@ -77,17 +84,18 @@ def get_texts(path_image, boxes, padding=0):
         boxes[index].append("".join([c if ord(c) < 128 else "" for c in text]).strip())
     return boxes
 
+
 # variables pour l'exemple
 path_image = "../data/train_version_YOLO_V8/images/DS_11_jpg.rf.7dea8b7e0a5f3623f8c68550a201d943.jpg"
 padding = 0
 boxes = [
-[0.15,0.80625,0.165625,0.0984375],
-[0.80703125,0.1875,0.21171875,0.109375],
-[0.2109375,0.184375,0.25234375,0.12421875],
-[0.80625,0.51796875,0.1921875,0.16171875],
-[0.66640625,0.90546875,0.20859375,0.11875],
-[0.84765625,0.8328125,0.165625,0.115625],
-[0.2609375,0.4546875,0.103125,0.090625]
+    [0.15, 0.80625, 0.165625, 0.0984375],
+    [0.80703125, 0.1875, 0.21171875, 0.109375],
+    [0.2109375, 0.184375, 0.25234375, 0.12421875],
+    [0.80625, 0.51796875, 0.1921875, 0.16171875],
+    [0.66640625, 0.90546875, 0.20859375, 0.11875],
+    [0.84765625, 0.8328125, 0.165625, 0.115625],
+    [0.2609375, 0.4546875, 0.103125, 0.090625]
 ]
 
-print(get_texts(path_image,boxes))
+print(get_texts(path_image, boxes))
